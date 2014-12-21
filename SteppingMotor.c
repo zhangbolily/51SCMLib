@@ -1,9 +1,9 @@
 #include "SteppingMotor.h"
 
-void delay(unsigned int t)
-{
-      while(--t);
-}
+unsigned char code mode1[4] = { 0x03, 0x06, 0x0c, 0x09 };
+unsigned char code mode2[2] = { 0x0a, 0x05 };
+unsigned char code mode3[8] = { 0x01, 0x03, 0x02, 0x06, 0x04, 0x0c, 0x08, 0x09 };
+unsigned char code mode4[4] = { 0x01, 0x02, 0x04, 0x08 };
 
 void driveMotor(unsigned char* mode, unsigned char port, char length)
 {
