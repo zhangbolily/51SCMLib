@@ -3,9 +3,10 @@
 #ifndef _GENERAL_H_
 #define _GENERAL_H_
 
-/******************************************
- *把所有的引脚定义出来
-*******************************************/
+/************************************************************************************
+ *把所有的引脚定义出来，方便函数使用
+ * 这些指令操作符定义的变量不需要extern关键字就可以被外部文件使用
+*************************************************************************************/
 sbit P00 = P0^0;
 sbit P01 = P0^1;
 sbit P02 = P0^2;
@@ -39,12 +40,22 @@ sbit P35 = P3^5;
 sbit P36 = P3^6;
 sbit P37 = P3^7;
 
-/******************************************
+/************************************************************************************
  *声明一些通用函数
- ******************************************/
+ * DataToPort()函数用来把数据发送到对应的端口
+ * DataToBit()函数把数据发送到某一个引脚上
+ * DataToBits()函数把数据发送到一些引脚上
+ * ReadPort()函数读取某一个端口的数据，返回读取值
+ * ReadBit()函数读取某一个引脚的数据，返回读取值
+ * ReadBits()函数读取给定的引脚的数据，返回读取值数组的指针
+ * Dalay()是一个简单的延时函数，用来做很短的延时
+ ************************************************************************************/
 
-void dataToPort(unsigned char port, unsigned int num);
-void dataToBit(unsigned char portBit,unsigned char num);
-void dataToBits(const unsigned char* portBits,const unsigned char* num, unsigned char length);
-void delay(unsigned int t);
+void DataToPort(unsigned char Port, unsigned int Num);
+void DataToBit(unsigned char PortBit,unsigned char Num);
+void DataToBits(const unsigned char* PortBits,const unsigned char* Num, unsigned char Length);
+unsigned char ReadPort(unsigned char Port);
+unsigned char ReadBit(unsigned char PortBit);
+void ReadBits(unsigned char *PortBits, unsigned char* Num, unsigned char Length);
+void Delay(unsigned int T);
 #endif
